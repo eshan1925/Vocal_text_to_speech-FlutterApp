@@ -19,11 +19,12 @@ class TheApp extends StatelessWidget {
       theme: ThemeData.dark(),
       // ignore: prefer_const_constructors
       home: MaterialApp(
-        debugShowCheckedModeBanner: false,
+        debugShowCheckedModeBanner: true,
         home: Scaffold(
           appBar: AppBar(
+            backgroundColor: Colors.black,
             centerTitle: true,
-            title: const Text("Vocal"),
+            title: const Text("Vocal",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 35,letterSpacing: 3),),
           ),
           body: MyApp(),
         ),
@@ -107,14 +108,13 @@ class MyApp extends StatelessWidget {
         // ignore: unnecessary_new, prefer_const_constructors
         gradient: new LinearGradient(
           // ignore: prefer_const_literals_to_create_immutables
-          colors: [Colors.black, Colors.deepPurple],
+          colors: [Colors.black, Colors.deepPurple, Colors.black],
           begin: FractionalOffset.topCenter,
           end: FractionalOffset.bottomCenter,
         ),
       ),
       alignment: Alignment.topCenter,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
+      child: ListView(
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.fromLTRB(25, 40, 25, 20),
@@ -140,16 +140,22 @@ class MyApp extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  child: const Text("Press to say in English"),
+                  child: const Text("Press to say in English",style: TextStyle(color: Colors.black),),
                   onPressed: () => _speakEnglish(textEditingController.text),
+                  style: ElevatedButton.styleFrom(
+            primary: Colors.white,
+            padding: const EdgeInsets.fromLTRB(15, 15, 15, 15)),
                 ),
                 // ignore: prefer_const_constructors
                 SizedBox(
                   width: 15,
                 ),
                 ElevatedButton(
-                  child: const Text("Press to say in Hindi"),
+                  child: const Text("Press to say in Hindi",style: TextStyle(color: Colors.black),),
                   onPressed: () => _speakHindi(textEditingController.text),
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                      padding: const EdgeInsets.fromLTRB(15, 15, 15, 15)),
                 ),
               ],
             ),
@@ -160,16 +166,22 @@ class MyApp extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  child: const Text("Press to say in French"),
+                  child: const Text("Press to say in French",style: TextStyle(color: Colors.black),),
                   onPressed: () => _speakFrench(textEditingController.text),
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                      padding: const EdgeInsets.fromLTRB(15, 15, 15, 15)),
                 ),
                 // ignore: prefer_const_constructors
                 SizedBox(
                   width: 15,
                 ),
                 ElevatedButton(
-                  child: const Text("Press to say in Chinese"),
+                  child: const Text("Press to say in Korean",style: TextStyle(color: Colors.black),),
                   onPressed: () => _speakKorean(textEditingController.text),
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                      padding: const EdgeInsets.fromLTRB(15, 15, 15, 15)),
                 ),
               ],
             ),
@@ -180,16 +192,22 @@ class MyApp extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  child: const Text("Press to say in Japanese"),
+                  child: const Text("Press to say in Japanese",style: TextStyle(color: Colors.black),),
                   onPressed: () => _speakJapanese(textEditingController.text),
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                      padding: const EdgeInsets.fromLTRB(15, 15, 15, 15)),
                 ),
                 // ignore: prefer_const_constructors
                 SizedBox(
                   width: 15,
                 ),
                 ElevatedButton(
-                  child: const Text("Press to say in Russian"),
+                  child: const Text("Press to say in Russian",style: TextStyle(color: Colors.black),),
                   onPressed: () => _speakRussian(textEditingController.text),
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                      padding: const EdgeInsets.fromLTRB(15, 15, 15, 15)),
                 ),
               ],
             ),
@@ -216,7 +234,8 @@ class MyApp extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   // ignore: prefer_const_literals_to_create_immutables
                   children: <Widget>[
-                    const EmojiButton(emoji: '👉', emojiText: 'Hey,how are you?'),
+                    const EmojiButton(
+                        emoji: '👉', emojiText: 'Hey,how are you?'),
                     const EmojiButton(emoji: '👈', emojiText: 'I am fine'),
                     const EmojiButton(emoji: '👆', emojiText: 'Good Morning'),
                     const EmojiButton(emoji: '🖐️', emojiText: 'Hello'),
@@ -258,26 +277,33 @@ class MyApp extends StatelessWidget {
 }
 
 class EmojiButton extends StatelessWidget {
-  final String emoji,emojiText;
-  const EmojiButton({Key? key, required this.emoji, required this.emojiText}) : super(key: key);
+  final String emoji, emojiText;
+  const EmojiButton({Key? key, required this.emoji, required this.emojiText})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-  final FlutterTts flutterTts = FlutterTts();
-        // ignore: unused_element
-      Future _speakEmoji(String text) async {
+    final FlutterTts flutterTts = FlutterTts();
+    // ignore: unused_element
+    Future _speakEmoji(String text) async {
       await flutterTts.setLanguage("en-IN");
       await flutterTts.setPitch(1);
       // ignore: avoid_print
       await flutterTts.speak(text);
       // ignore: avoid_print
     }
+
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: ElevatedButton(
-        child: Text(emoji,style: const TextStyle(fontSize: 25),),
+        child: Text(
+          emoji,
+          style: const TextStyle(fontSize: 25),
+        ),
         onPressed: () => _speakEmoji(emojiText),
-        style: ElevatedButton.styleFrom(primary: Colors.black12,padding: const EdgeInsets.fromLTRB(15,15,15,15)),
+        style: ElevatedButton.styleFrom(
+            primary: Colors.white12,
+            padding: const EdgeInsets.fromLTRB(15, 15, 15, 15)),
       ),
     );
   }
