@@ -1,7 +1,13 @@
-# text_to_speech
+# Vokal
 
 A new Flutter project.
 
+For running this project , clone the repo and open it in Android Studio or VS Code and run this on an Emulator.
+
+
+## APK Link-:
+
+<a href="https://drive.google.com/file/d/1hCsXnOsDUFaQKvOMuRW6bUc19AKm3ozz/view?usp=sharing">Link</a>
 ## Getting Started
 
 This project is a starting point for a Flutter application.
