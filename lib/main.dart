@@ -19,12 +19,12 @@ class TheApp extends StatelessWidget {
       theme: ThemeData.dark(),
       // ignore: prefer_const_constructors
       home: MaterialApp(
-        debugShowCheckedModeBanner: true,
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.black,
             centerTitle: true,
-            title: const Text("Vocal",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 35,letterSpacing: 3),),
+            title: const Text("Vokal",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 35,letterSpacing: 3),),
           ),
           body: MyApp(),
         ),
